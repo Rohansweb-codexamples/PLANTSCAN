@@ -13,22 +13,26 @@
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:linear-gradient(135deg,#e8f7df,#ffffff,#d9f5d0);
   color:#17251a;
   min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,#dff6d9 0,transparent 35%),
+    radial-gradient(circle at 90% 20%,#fff1c7 0,transparent 35%),
+    linear-gradient(135deg,#f7fff4,#eef8ed,#ffffff);
 }
 
 header{
-  padding:22px 6%;
+  height:76px;
+  padding:0 6%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid rgba(0,0,0,.08);
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(30,70,35,.08);
   position:sticky;
   top:0;
-  z-index:10;
+  z-index:20;
 }
 
 .logo{
@@ -38,130 +42,137 @@ header{
 }
 
 .logo span{
-  color:#79a83b;
+  color:#8caf43;
+}
+
+.status{
+  font-size:13px;
+  color:#53705a;
 }
 
 main{
-  max-width:1100px;
+  max-width:1080px;
   margin:auto;
-  padding:55px 20px 80px;
+  padding:65px 20px 80px;
 }
 
 .hero{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:42px;
 }
 
 .hero h1{
-  font-size:clamp(42px,7vw,76px);
-  margin:0 0 15px;
-  letter-spacing:-3px;
+  font-size:clamp(42px,7vw,78px);
+  letter-spacing:-4px;
+  line-height:.95;
+  margin:0 0 20px;
 }
 
 .hero h1 span{
-  color:#388e3c;
+  color:#398d43;
 }
 
 .hero p{
-  font-size:19px;
-  color:#607064;
-  margin:0 auto;
   max-width:650px;
+  margin:auto;
+  color:#617064;
+  font-size:19px;
   line-height:1.6;
 }
 
 .scanner{
-  max-width:760px;
+  max-width:780px;
   margin:auto;
-  background:rgba(255,255,255,.82);
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 25px 70px rgba(31,75,38,.14);
-  border-radius:30px;
   padding:28px;
-  backdrop-filter:blur(20px);
+  border-radius:32px;
+  background:rgba(255,255,255,.84);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 25px 80px rgba(30,75,35,.14);
+  backdrop-filter:blur(22px);
 }
 
 .dropzone{
-  min-height:330px;
+  min-height:350px;
   border:2px dashed #9fc8a5;
-  border-radius:24px;
+  border-radius:25px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   padding:25px;
+  background:linear-gradient(145deg,#fbfffa,#eef9ec);
   cursor:pointer;
-  transition:.25s;
-  background:linear-gradient(145deg,#f8fff7,#eff9ed);
+  transition:.2s;
 }
 
 .dropzone:hover,
 .dropzone.drag{
-  border-color:#388e3c;
-  background:#e9f7e7;
+  border-color:#398d43;
+  background:#eaf7e7;
   transform:translateY(-2px);
 }
 
+.upload-icon{
+  width:76px;
+  height:76px;
+  margin:auto;
+  border-radius:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#dff1dd;
+  color:#398d43;
+  font-size:42px;
+  font-weight:300;
+}
+
 .upload-content h2{
-  margin:15px 0 8px;
-  font-size:27px;
+  margin:18px 0 8px;
+  font-size:28px;
 }
 
 .upload-content p{
   color:#68756b;
-  margin:0 0 20px;
-}
-
-.upload-icon{
-  width:70px;
-  height:70px;
-  margin:auto;
-  border-radius:22px;
-  background:#dff2df;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:32px;
-  color:#388e3c;
-  font-weight:bold;
+  margin:0 0 22px;
 }
 
 .buttons{
   display:flex;
   justify-content:center;
-  gap:12px;
   flex-wrap:wrap;
+  gap:12px;
 }
 
 button{
+  font:inherit;
   border:0;
   cursor:pointer;
-  font:inherit;
 }
 
 .primary{
-  background:#388e3c;
-  color:white;
-  padding:14px 24px;
+  padding:14px 25px;
   border-radius:14px;
-  font-weight:700;
+  background:#398d43;
+  color:white;
+  font-weight:800;
   transition:.2s;
 }
 
 .primary:hover{
-  background:#2d7331;
+  background:#2d7335;
   transform:translateY(-2px);
 }
 
 .secondary{
-  background:#edf5ed;
-  color:#285c31;
-  padding:14px 24px;
+  padding:14px 25px;
   border-radius:14px;
-  font-weight:700;
+  background:#edf5ed;
+  color:#285d32;
+  font-weight:800;
 }
 
-#fileInput{
+#fileInput,
+#cameraInput{
   display:none;
 }
 
@@ -170,8 +181,9 @@ button{
 }
 
 .preview img{
+  display:block;
   width:100%;
-  max-height:500px;
+  max-height:520px;
   object-fit:contain;
   border-radius:22px;
   background:#edf4ed;
@@ -190,36 +202,62 @@ button{
 .scan-button{
   width:100%;
   margin-top:15px;
-  padding:17px;
+  padding:18px;
   border-radius:15px;
   background:#216b35;
   color:white;
   font-size:17px;
   font-weight:800;
+  transition:.2s;
 }
 
 .scan-button:hover{
   background:#174e27;
+  transform:translateY(-1px);
+}
+
+.scan-button:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 .loading{
   display:none;
   text-align:center;
-  padding:35px 10px;
+  padding:40px 10px;
 }
 
 .spinner{
-  width:45px;
-  height:45px;
-  border:4px solid #dcebdc;
-  border-top-color:#388e3c;
-  border-radius:50%;
-  animation:spin .8s linear infinite;
+  width:48px;
+  height:48px;
   margin:0 auto 18px;
+  border-radius:50%;
+  border:4px solid #dcebdc;
+  border-top-color:#398d43;
+  animation:spin .8s linear infinite;
 }
 
 @keyframes spin{
   to{transform:rotate(360deg)}
+}
+
+.loading strong{
+  font-size:18px;
+}
+
+.loading p{
+  color:#68756b;
+}
+
+.error{
+  display:none;
+  margin-top:20px;
+  padding:17px;
+  border-radius:15px;
+  background:#fff1f1;
+  border:1px solid #efcccc;
+  color:#a12d2d;
+  line-height:1.5;
 }
 
 .results{
@@ -229,22 +267,22 @@ button{
 
 .result-card{
   background:#f8fcf7;
-  border-radius:22px;
-  padding:24px;
   border:1px solid #dcebdc;
+  border-radius:24px;
+  padding:25px;
 }
 
 .result-title{
-  font-size:30px;
+  font-size:32px;
   font-weight:800;
   color:#216b35;
-  margin:0 0 5px;
+  margin-bottom:6px;
 }
 
 .scientific{
   font-style:italic;
-  color:#657168;
-  margin-bottom:22px;
+  color:#667268;
+  margin-bottom:23px;
 }
 
 .details{
@@ -254,16 +292,16 @@ button{
 }
 
 .detail{
+  padding:16px;
   background:white;
+  border:1px solid #e3ece3;
   border-radius:15px;
-  padding:15px;
-  border:1px solid #e4eee4;
 }
 
 .detail small{
   display:block;
   color:#7a857b;
-  margin-bottom:5px;
+  margin-bottom:6px;
 }
 
 .detail strong{
@@ -271,42 +309,33 @@ button{
 }
 
 .confidence{
-  margin-top:18px;
+  margin-top:17px;
   padding:17px;
-  background:#e7f5e6;
   border-radius:15px;
-  font-weight:700;
+  background:#e5f4e3;
+  color:#285d32;
+  font-weight:800;
 }
 
 .alternatives{
-  margin-top:20px;
+  margin-top:24px;
 }
 
 .alternatives h3{
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .alt{
   display:flex;
   justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid #e2ebe2;
-}
-
-.error{
-  display:none;
-  margin-top:20px;
-  background:#fff0f0;
-  color:#a12d2d;
-  border:1px solid #f0cccc;
-  padding:17px;
-  border-radius:15px;
-  line-height:1.5;
+  gap:20px;
+  padding:13px 0;
+  border-bottom:1px solid #e1eae1;
 }
 
 .new-scan{
   width:100%;
-  margin-top:15px;
+  margin-top:18px;
   padding:15px;
   border-radius:14px;
   background:#eaf4e9;
@@ -316,31 +345,44 @@ button{
 
 footer{
   text-align:center;
-  color:#718075;
+  color:#748078;
   padding:25px;
   font-size:14px;
 }
 
 @media(max-width:600px){
+
+  header{
+    padding:0 18px;
+  }
+
+  .status{
+    display:none;
+  }
+
   main{
-    padding:35px 14px 60px;
+    padding:40px 14px 60px;
   }
 
   .scanner{
     padding:16px;
-    border-radius:22px;
+    border-radius:23px;
   }
 
   .dropzone{
     min-height:290px;
   }
 
+  .hero h1{
+    letter-spacing:-2px;
+  }
+
   .details{
     grid-template-columns:1fr;
   }
 
-  .hero h1{
-    letter-spacing:-2px;
+  .result-title{
+    font-size:27px;
   }
 }
 </style>
@@ -350,6 +392,7 @@ footer{
 
 <header>
   <div class="logo">Plant<span>Scanner</span></div>
+  <div class="status">Powered by Pl@ntNet</div>
 </header>
 
 <main>
@@ -357,7 +400,7 @@ footer{
 <section class="hero">
   <h1>Discover your <span>plant.</span></h1>
   <p>
-    Take a photo or upload an image and use Pl@ntNet to identify the plant.
+    Take a photo or upload an image and let AI identify your plant.
   </p>
 </section>
 
@@ -376,6 +419,7 @@ footer{
       </p>
 
       <div class="buttons">
+
         <button class="primary" id="chooseButton">
           Choose photo
         </button>
@@ -383,6 +427,7 @@ footer{
         <button class="secondary" id="cameraButton">
           Use camera
         </button>
+
       </div>
 
     </div>
@@ -392,20 +437,19 @@ footer{
   <input
     type="file"
     id="fileInput"
-    accept="image/*"
+    accept="image/jpeg,image/png,image/webp"
   >
 
   <input
     type="file"
     id="cameraInput"
-    accept="image/*"
+    accept="image/jpeg,image/png,image/*"
     capture="environment"
-    style="display:none"
   >
 
   <div class="preview" id="preview">
 
-    <img id="previewImage" alt="Selected plant">
+    <img id="previewImage" alt="Plant photo">
 
     <div class="preview-actions">
       <button class="secondary" id="changeButton">
@@ -426,7 +470,7 @@ footer{
     <strong>Identifying your plant...</strong>
 
     <p>
-      Pl@ntNet is analysing the image.
+      Pl@ntNet is analysing your image.
     </p>
 
   </div>
@@ -495,140 +539,60 @@ footer{
 </main>
 
 <footer>
-  Plant Scanner powered by Pl@ntNet
+  Plant Scanner • Identification powered by Pl@ntNet
 </footer>
 
 <script>
 
-/* =========================================
-   PL@NTNET CONFIGURATION
-   ========================================= */
-
-const PLANTNET_API_KEY =
-  "2b10NmIo6jxPfY6TY9mMmCVyO";
-
-const PLANTNET_PROJECT = "all";
-
-
-/* =========================================
-   ELEMENTS
-   ========================================= */
-
-const fileInput =
-  document.getElementById("fileInput");
-
-const cameraInput =
-  document.getElementById("cameraInput");
-
-const chooseButton =
-  document.getElementById("chooseButton");
-
-const cameraButton =
-  document.getElementById("cameraButton");
-
-const changeButton =
-  document.getElementById("changeButton");
-
-const dropzone =
-  document.getElementById("dropzone");
-
-const preview =
-  document.getElementById("preview");
-
-const previewImage =
-  document.getElementById("previewImage");
-
-const scanButton =
-  document.getElementById("scanButton");
-
-const loading =
-  document.getElementById("loading");
-
-const results =
-  document.getElementById("results");
-
-const errorBox =
-  document.getElementById("error");
-
-const newScanButton =
-  document.getElementById("newScanButton");
+const fileInput = document.getElementById("fileInput");
+const cameraInput = document.getElementById("cameraInput");
+const chooseButton = document.getElementById("chooseButton");
+const cameraButton = document.getElementById("cameraButton");
+const changeButton = document.getElementById("changeButton");
+const dropzone = document.getElementById("dropzone");
+const preview = document.getElementById("preview");
+const previewImage = document.getElementById("previewImage");
+const scanButton = document.getElementById("scanButton");
+const loading = document.getElementById("loading");
+const results = document.getElementById("results");
+const errorBox = document.getElementById("error");
+const newScanButton = document.getElementById("newScanButton");
 
 let selectedFile = null;
 
+chooseButton.onclick = () => fileInput.click();
+changeButton.onclick = () => fileInput.click();
+cameraButton.onclick = () => cameraInput.click();
 
-/* =========================================
-   FILE SELECTION
-   ========================================= */
-
-chooseButton.addEventListener("click", () => {
-  fileInput.click();
+fileInput.addEventListener("change", e => {
+  if(e.target.files[0]) selectFile(e.target.files[0]);
 });
 
-cameraButton.addEventListener("click", () => {
-  cameraInput.click();
+cameraInput.addEventListener("change", e => {
+  if(e.target.files[0]) selectFile(e.target.files[0]);
 });
 
-changeButton.addEventListener("click", () => {
-  fileInput.click();
-});
-
-fileInput.addEventListener("change", event => {
-
-  const file = event.target.files[0];
-
-  if(file){
-    selectFile(file);
-  }
-
-});
-
-cameraInput.addEventListener("change", event => {
-
-  const file = event.target.files[0];
-
-  if(file){
-    selectFile(file);
-  }
-
-});
-
-
-/* =========================================
-   DRAG AND DROP
-   ========================================= */
-
-dropzone.addEventListener("dragover", event => {
-
-  event.preventDefault();
-
+dropzone.addEventListener("dragover", e => {
+  e.preventDefault();
   dropzone.classList.add("drag");
-
 });
 
 dropzone.addEventListener("dragleave", () => {
-
   dropzone.classList.remove("drag");
-
 });
 
-dropzone.addEventListener("drop", event => {
+dropzone.addEventListener("drop", e => {
 
-  event.preventDefault();
+  e.preventDefault();
 
   dropzone.classList.remove("drag");
 
-  const file = event.dataTransfer.files[0];
+  const file = e.dataTransfer.files[0];
 
   if(file && file.type.startsWith("image/")){
     selectFile(file);
   }
-
 });
-
-
-/* =========================================
-   SELECT IMAGE
-   ========================================= */
 
 function selectFile(file){
 
@@ -636,28 +600,19 @@ function selectFile(file){
 
   const reader = new FileReader();
 
-  reader.onload = event => {
+  reader.onload = e => {
 
-    previewImage.src =
-      event.target.result;
+    previewImage.src = e.target.result;
 
     dropzone.style.display = "none";
-
     preview.style.display = "block";
-
     results.style.display = "none";
-
     errorBox.style.display = "none";
 
   };
 
   reader.readAsDataURL(file);
 }
-
-
-/* =========================================
-   IDENTIFY PLANT
-   ========================================= */
 
 scanButton.addEventListener("click", identifyPlant);
 
@@ -668,8 +623,10 @@ async function identifyPlant(){
     return;
   }
 
-  loading.style.display = "block";
+  scanButton.disabled = true;
+
   preview.style.display = "none";
+  loading.style.display = "block";
   results.style.display = "none";
   errorBox.style.display = "none";
 
@@ -677,47 +634,27 @@ async function identifyPlant(){
 
     const formData = new FormData();
 
-    formData.append(
-      "images",
-      selectedFile
-    );
+    formData.append("image", selectedFile);
 
-    formData.append(
-      "organs",
-      "auto"
-    );
+    const response = await fetch("/api/scan", {
+      method:"POST",
+      body:formData
+    });
 
-    const url =
-      `https://my-api.plantnet.org/v2/identify/${PLANTNET_PROJECT}?api-key=${encodeURIComponent(PLANTNET_API_KEY)}`;
+    let data;
 
-    const response =
-      await fetch(url, {
-        method:"POST",
-        body:formData
-      });
-
-    if(!response.ok){
-
-      let message =
-        `Pl@ntNet returned HTTP ${response.status}.`;
-
-      try{
-
-        const errorData =
-          await response.json();
-
-        if(errorData.message){
-          message =
-            errorData.message;
-        }
-
-      }catch(e){}
-
-      throw new Error(message);
+    try{
+      data = await response.json();
+    }catch{
+      throw new Error("The server returned an invalid response.");
     }
 
-    const data =
-      await response.json();
+    if(!response.ok){
+      throw new Error(
+        data.error ||
+        "The plant identification server returned an error."
+      );
+    }
 
     displayResults(data);
 
@@ -725,48 +662,32 @@ async function identifyPlant(){
 
     console.error(error);
 
-    showError(
-      "The plant could not be identified. " +
-      error.message
-    );
+    showError(error.message);
 
     preview.style.display = "block";
 
   }finally{
 
     loading.style.display = "none";
+    scanButton.disabled = false;
 
   }
-
 }
-
-
-/* =========================================
-   DISPLAY RESULTS
-   ========================================= */
 
 function displayResults(data){
 
-  if(
-    !data.results ||
-    data.results.length === 0
-  ){
+  if(!data.results || !data.results.length){
 
     showError(
-      "No plant identification was found. " +
-      "Try a clearer photo showing the leaves or flowers."
+      "No plant was identified. Try a clearer photo showing the leaves, flowers or fruit."
     );
 
     preview.style.display = "block";
-
     return;
   }
 
-  const top =
-    data.results[0];
-
-  const species =
-    top.species || {};
+  const top = data.results[0];
+  const species = top.species || {};
 
   const scientific =
     species.scientificNameWithoutAuthor ||
@@ -777,30 +698,14 @@ function displayResults(data){
     species.commonNames || [];
 
   const family =
-    species.family ||
-    "Unknown";
+    typeof species.family === "object"
+      ? species.family?.scientificNameWithoutAuthor
+      : species.family;
 
   const genus =
-    species.genus ||
-    "Unknown";
-
-  document.getElementById("plantName").textContent =
-    commonNames[0] ||
-    scientific;
-
-  document.getElementById("scientificName").textContent =
-    scientific;
-
-  document.getElementById("family").textContent =
-    family;
-
-  document.getElementById("genus").textContent =
-    genus;
-
-  document.getElementById("commonName").textContent =
-    commonNames.length
-      ? commonNames.join(", ")
-      : "No common name available";
+    typeof species.genus === "object"
+      ? species.genus?.scientificNameWithoutAuthor
+      : species.genus;
 
   const score =
     Number(top.score || 0);
@@ -808,72 +713,69 @@ function displayResults(data){
   const percentage =
     Math.round(score * 100);
 
+  document.getElementById("plantName").textContent =
+    commonNames[0] || scientific;
+
+  document.getElementById("scientificName").textContent =
+    scientific;
+
+  document.getElementById("family").textContent =
+    family || "Unknown";
+
+  document.getElementById("genus").textContent =
+    genus || "Unknown";
+
+  document.getElementById("commonName").textContent =
+    commonNames.length
+      ? commonNames.join(", ")
+      : "No common name available";
+
   document.getElementById("confidenceText").textContent =
     percentage + "%";
 
   document.getElementById("confidencePercent").textContent =
     percentage + "%";
 
-
-  /* Alternatives */
-
   const list =
     document.getElementById("alternativeList");
 
   list.innerHTML = "";
 
-  data.results
-    .slice(1,5)
-    .forEach(result => {
+  data.results.slice(1,5).forEach(result => {
 
-      const item =
-        document.createElement("div");
+    const item = document.createElement("div");
 
-      item.className = "alt";
+    item.className = "alt";
 
-      const name =
-        result.species?.scientificNameWithoutAuthor ||
-        result.species?.scientificName ||
-        "Unknown";
+    const resultSpecies =
+      result.species || {};
 
-      const score =
-        Math.round(
-          Number(result.score || 0) * 100
-        );
+    const name =
+      resultSpecies.scientificNameWithoutAuthor ||
+      resultSpecies.scientificName ||
+      "Unknown";
 
-      item.innerHTML = `
-        <span>${escapeHTML(name)}</span>
-        <strong>${score}%</strong>
-      `;
+    const score =
+      Math.round(Number(result.score || 0) * 100);
 
-      list.appendChild(item);
+    item.innerHTML = `
+      <span>${escapeHTML(name)}</span>
+      <strong>${score}%</strong>
+    `;
 
-    });
+    list.appendChild(item);
 
+  });
 
   results.style.display = "block";
-
 }
-
-
-/* =========================================
-   ERROR
-   ========================================= */
 
 function showError(message){
 
-  errorBox.textContent =
-    message;
-
-  errorBox.style.display =
-    "block";
+  errorBox.textContent = message;
+  errorBox.style.display = "block";
 
 }
-
-
-/* =========================================
-   RESET
-   ========================================= */
 
 newScanButton.addEventListener("click", resetScanner);
 
@@ -887,21 +789,12 @@ function resetScanner(){
   previewImage.src = "";
 
   results.style.display = "none";
-
   preview.style.display = "none";
-
   loading.style.display = "none";
-
   errorBox.style.display = "none";
 
   dropzone.style.display = "flex";
-
 }
-
-
-/* =========================================
-   BASIC HTML ESCAPING
-   ========================================= */
 
 function escapeHTML(value){
 
